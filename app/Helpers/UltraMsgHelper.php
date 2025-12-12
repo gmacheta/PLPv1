@@ -8,10 +8,16 @@ class UltraMsgHelper
 {
     public static function sendWhatsAppMessage(string $to, string $message): bool
     {
+        // Format phone number for WhatsApp (must include country code)
+        // Example: 0912345678 becomes 963912345678 (Syria +963)
+        if (substr($to, 0, 1) === '0') {
+            $to = '963' . substr($to, 1); // Syria country code
+        }
+        
         $params = [
             'token' => env('ULTRAMSG_TOKEN'),
             'to' => $to,
-            'body' => $message,
+            'body' => "Your Bayti verification code is: " . $message,
         ];
 
         $curl = curl_init();

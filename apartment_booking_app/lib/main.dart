@@ -6,6 +6,10 @@ import 'screens/role_select_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/apartments_list_screen.dart';
+import 'screens/apartment_detail_screen.dart';
+import 'screens/admin_login_screen.dart';
+import 'screens/admin_dashboard_screen.dart';
+import 'screens/add_apartment_screen.dart';
 
 void main() {
   runApp(const BaytiApp());
@@ -27,6 +31,10 @@ class BaytiApp extends StatelessWidget {
         '/login': (_) => const LoginScreen(),
         '/register': (_) => const RegisterScreen(),
         '/apartments': (_) => const ApartmentsListScreen(),
+        '/apartment-detail': (_) => const ApartmentDetailScreen(),
+        '/admin-login': (_) => const AdminLoginScreen(),
+        '/admin-dashboard': (_) => const AdminDashboardScreen(),
+        '/add-apartment': (_) => const AddApartmentScreen(),
       },
     );
   }

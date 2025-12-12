@@ -10,6 +10,8 @@ class ApiClient {
     http.Client? inner,
   }) : _inner = inner ?? http.Client();
 
+  String? get token => _token;
+
   Map<String, String> _headers({bool json = false}) {
     final headers = <String, String>{};
     if (json) headers['Content-Type'] = 'application/json';
@@ -45,7 +47,13 @@ class ApiClient {
     final uri = Uri.parse('$baseUrl$path');
     return _inner.get(uri, headers: _headers());
   }
-  void setToken(String token) {
+  
+  Future<http.Response> delete(String path) {
+    final uri = Uri.parse('$baseUrl$path');
+    return _inner.delete(uri, headers: _headers());
+  }
+  
+  void setToken(String? token) {
     _token = token;
   }
 }
